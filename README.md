@@ -1,4 +1,6 @@
-# Automatically reload configuration changes based on Kubernetes config maps in a .NET core application
+# .NET Configuration in Kubernetes config maps with auto reload
+
+![Log level configuration in config map](media/article-preview.png)
 
 Kubernetes config maps allows the injection of configuration into an application. The contents of a config map can be injected as environment variables or mounted files.
 
@@ -159,7 +161,7 @@ Disclaimer: this is a quick implementation, not tested in different environments
 
 ### Testing the sample application
 
-Deploy the application:
+Clone this repository then deploy the application:
 ```bash
 kubectl apply -f configmap.yaml
 kubectl apply -f deployment.yaml
@@ -170,7 +172,7 @@ In a separated console window stream the container log:
 kubectl logs -l app=config-demo-app -f
 ```
 
-Open a tunnel to the application with kubectl
+Open a tunnel to the application with kubectl port-forward
 ```bash
  kubectl port-forward <pod-name> 60000:80
 ```
