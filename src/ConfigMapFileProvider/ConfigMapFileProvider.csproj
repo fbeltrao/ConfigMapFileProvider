@@ -1,23 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net5</TargetFrameworks>
     <Description>
     Dynamic reload config from file for Kubernetes with Config Map. 
     Usage:
-      configBuilder.SetBasePath(Path.Join(AppContext.BaseDirectory, "config"))
-                  .AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), "appsettings.json", true, true);
+        static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((c,b)=>{
+                    b.SetBasePath(Path.Join(AppContext.BaseDirectory,"config"))
+                    .AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), "appsettings.json");
+                })
+                .UseConsoleLifetime()
+                ;
+        }
     </Description>
-    <version>1.0.0</version>
+    <version>2.0.1</version>
     <authors>Jaine.ch</authors>
     <owners>Jaine.ch</owners>
-    <releaseNotes>First version</releaseNotes>
+    <title>Config Map File Provider</title>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <releaseNotes>Support .Net 5</releaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="3.1.9" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="3.1.9" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
