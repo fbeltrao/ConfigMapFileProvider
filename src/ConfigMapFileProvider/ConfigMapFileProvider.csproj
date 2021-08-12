@@ -21,7 +21,7 @@
     <owners>Jaine.ch</owners>
     <title>Config Map File Provider</title>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <releaseNotes>Support .Net 5</releaseNotes>
+    <releaseNotes>Disable the output in console about "Checking for ..."</releaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -85,7 +85,7 @@ namespace Microsoft.Extensions.Configuration
         {
             var fullPath = Path.Combine(rootPath, filter);
 
-            Console.WriteLine($"Checking for changes in {fullPath}");
+            //Console.WriteLine($"Checking for changes in {fullPath}");
 
             var newCheckSum = GetFileChecksum(fullPath);
             var newHasChangesValue = false;
